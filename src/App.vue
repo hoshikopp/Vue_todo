@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<body>
+  <section class="section">
+    <AddForm/>
+    <div class="container">
+      <h1 class="title">
+        {{ tasks }}
+      </h1>
+      <p class="subtitle">
+        My first website with <strong>Bulma</strong>!
+        <add-form v-model= "tasks" @tasks= "addTask"></add-form>
+      </p>
+    </div>
+  </section>
+  </body>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import AddForm from './components/AddForm.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    AddForm
+  },
+  data: function() {
+    return {
+      tasks: []
+    }
+  },
+  methods: {
+    addTask: function(text) {
+      this.tasks = text
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "../node_modules/bulma/bulma.sass";
+
 </style>
