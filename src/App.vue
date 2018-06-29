@@ -1,15 +1,8 @@
 <template>
 <body>
   <section class="section">
-    <AddForm/>
+    <AddForm @add-task='addTask' v-bind:test="tasks"/>
     <div class="container">
-      <h1 class="title">
-        {{ tasks }}
-      </h1>
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
-        <add-form v-model= "tasks" @tasks= "addTask"></add-form>
-      </p>
     </div>
   </section>
   </body>
@@ -29,7 +22,7 @@ export default {
   },
   methods: {
     addTask: function(text) {
-      this.tasks = text
+      this.tasks.push(text)
     }
   }
 }

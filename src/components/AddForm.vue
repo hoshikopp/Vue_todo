@@ -2,11 +2,11 @@
   <section class="section">
     <div class="field">
 　   <div class="control">
-      <input class="input is-danger" type="text" placeholder="Danger input" v-model= "tasks">
+      <input class="input is-danger" type="text" placeholder="Danger input" v-model="task">
      </div>
 　   </div>
-    <input class="button" type="submit" value="追加" v-on:click= "$emit('tasks')">
-      <p>{{ tasks }}</p>
+    <input class="button" type="submit" value="追加" v-on:click="addTask">
+    <p>{{ test }}</p>
   </section>
 </template>
 
@@ -14,7 +14,15 @@
 export default{
   data: function() {
     return {
-      tasks: ""
+      task: ""
+    }
+  },
+  props: [
+    'test'
+  ],
+  methods: {
+    addTask: function() {
+      this.$emit('add-task', this.task)
     }
   }
 }
