@@ -1,7 +1,10 @@
 <template>
 <body>
   <section class="section">
-    <AddForm @add-task='addTask' v-bind:test="tasks"/>
+    <AddForm @add-task='addTask'/>
+    <ul>
+      <TodoList v-for='(task, index) in tasks' v-bind:task='{ task: task, index: index }'/>
+    </ul>
     <div class="container">
     </div>
   </section>
@@ -10,10 +13,13 @@
 
 <script>
 import AddForm from './components/AddForm.vue'
+import TodoList from './components/TodoList.vue'
+
 export default {
   name: 'app',
   components: {
-    AddForm
+    AddForm,
+    TodoList
   },
   data: function() {
     return {
@@ -23,6 +29,9 @@ export default {
   methods: {
     addTask: function(text) {
       this.tasks.push(text)
+    },
+    deleteTask: function(index) {
+      this.todos.splice(index, 1)
     }
   }
 }

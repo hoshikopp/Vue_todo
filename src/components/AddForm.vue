@@ -6,7 +6,7 @@
      </div>
 　   </div>
     <input class="button" type="submit" value="追加" v-on:click="addTask">
-    <p>{{ test }}</p>
+
   </section>
 </template>
 
@@ -17,9 +17,6 @@ export default{
       task: ""
     }
   },
-  props: [
-    'test'
-  ],
   methods: {
     addTask: function() {
       this.$emit('add-task', this.task)
